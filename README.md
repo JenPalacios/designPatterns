@@ -1,1 +1,1 @@
-A repository to study design patterns
+A repository to study design patterns.
