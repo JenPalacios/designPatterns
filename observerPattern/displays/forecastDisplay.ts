@@ -1,27 +1,34 @@
 import { Observer } from "../interfaces/observer";
 import { DisplayElement } from "../interfaces/displayElement";
-import { Subject } from "../interfaces/subject";
+import { WeatherData } from "../weatherData";
 
 export class ForecastDisplay implements Observer, DisplayElement {
 
-    private _weatherData: Subject;
-    private _temperature: number;
-    private _humidity: number;
+    private _currentPressure: number = 29.92;
+    private _lastPressure: number;
+    private _weatherData: WeatherData;
 
     constructor(
-        weatherData: Subject
+        weatherData: WeatherData
     ) {
         this._weatherData = weatherData;
         this._weatherData.registerObserver(this);
     }
 
-    public update(temperature: number, humidity: number) {
-        this._temperature = temperature;
-        this._humidity = humidity;
+    public update(temperature: number, humidity: number, pressure: number) {
+        this._lastPressure = this._currentPressure;
+        this._currentPressure = pressure;
         this.display();
     }
 
     public display() {
-        console.log(`The forecast is: ${this._temperature} C degrees and ${this._humidity} % of humidity.`);
+        console.log("Forecast:");
+        if (this._currentPressure > this._lastPressure) {
+            console.log("Improving weather on the way!");
+        } else if (this._currentPressure === this._lastPressure) {
+            console.log("More of the same");
+        } else if (this._currentPressure < this._lastPressure) {
+            console.log("Watch out for cooler, rainy weather!");
+        }
     }
 }

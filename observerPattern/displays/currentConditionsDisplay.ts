@@ -1,20 +1,20 @@
 import { Observer } from "../interfaces/observer";
 import { DisplayElement } from "../interfaces/displayElement";
-import { Subject } from "../interfaces/subject";
+import { WeatherData } from "../weatherData";
 
 export class CurrentConditionsDisplay implements Observer, DisplayElement {
     private _temperature: number;
     private _humidity: number;
-    private _weatherData: Subject;
+    private _weatherData: WeatherData;
 
     constructor(
-        weatherData: Subject
+        weatherData: WeatherData
     ) {
         this._weatherData = weatherData;
         this._weatherData.registerObserver(this);
     }
 
-    public update(temperature: number, humidity: number) {
+    public update(temperature: number, humidity: number, pressure: number) {
         this._temperature = temperature;
         this._humidity = humidity;
         this.display();

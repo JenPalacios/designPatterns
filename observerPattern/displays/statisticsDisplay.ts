@@ -1,28 +1,38 @@
 import { Observer } from "../interfaces/observer";
 import { DisplayElement } from "../interfaces/displayElement";
-import { Subject } from "../interfaces/subject";
+import { WeatherData } from "../weatherData";
 
 export class StatisticsDisplay implements Observer, DisplayElement {
-    private _weatherData: Subject;
-    private _temperature: number;
-    private _humidity: number;
-    private _pressure: number;
+
+    private _maxTemp: number = 0;
+    private _minTemp: number = 200
+    private _tempSum: number = 0;
+    private _numReadings: number = 0;
+    private _weatherData: WeatherData;
 
     constructor(
-        weatherData: Subject
+        weatherData: WeatherData
     ) {
         this._weatherData = weatherData;
         this._weatherData.registerObserver(this);
     }
 
-    public update(temperature: number, humidity: number, pressure: number) {
-        this._temperature = temperature;
-        this._humidity = humidity;
-        this._pressure = pressure;
+    public update(temperature: number, humidity: number, pressure: number): void {
+        this._tempSum += temperature;
+        this._numReadings++;
+
+        if (temperature > this._maxTemp) {
+            this._maxTemp = temperature;
+        }
+
+        if (temperature < this._minTemp) {
+            this._minTemp = temperature;
+        }
+
         this.display();
     }
 
     public display() {
-        console.log(`Statistics: ${this._temperature} C degrees, ${this._humidity} % humidity and ${this._pressure} the pressure`);
+        console.log(`Avg/Max/Min temperature = ${this._tempSum / this._numReadings} / ${this._maxTemp} / ${this._minTemp}`);
     }
 }

@@ -1,3 +1,6 @@
+/**
+ * in the root of the project run: ts-node observerPattern/weatherStation.ts
+ */
 import { WeatherData } from "./weatherData";
 import { CurrentConditionsDisplay } from "./displays/currentConditionsDisplay";
 import { StatisticsDisplay } from "./displays/statisticsDisplay";
@@ -13,7 +16,7 @@ export class WeatherStation {
         new ForecastDisplay(weatherData);
 
         weatherData.setMeasurements(25, 65, 30);
-        weatherData.setMeasurements(10, 85, 52);
+        weatherData.setMeasurements(10, 85, 10);
     }
 
 }
