@@ -1,10 +1,9 @@
 import { CondimentDecorator } from "../abstractCondimentDecorator";
 import { Beverage } from "../abstractBeverage";
+import { Size } from "../enums";
 
 export class Soy extends CondimentDecorator {
     
-    private _beverage: Beverage;
-
     constructor(beverage: Beverage) {
         super();
         this._beverage = beverage;
@@ -16,7 +15,17 @@ export class Soy extends CondimentDecorator {
 
     public cost() {
         const beverageCost = this._beverage.cost();
-        const soyCost = 0.15;
+
+        let soyCost = 0;
+
+        if (Size.TALL === this._beverage.getSize()) {
+            soyCost = 0.10;
+        } else if (Size.GRANDE === this._beverage.getSize()) {
+            console.log("I AM GRANDE!");
+            soyCost = 0.15;
+        } else if (Size.VENTI === this._beverage.getSize() ) {
+            soyCost = 0.20;
+        }
 
         return beverageCost + soyCost;
     }

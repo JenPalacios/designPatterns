@@ -3,8 +3,6 @@ import { Beverage } from "../abstractBeverage";
 
 export class Whip extends CondimentDecorator {
 
-    private _beverage: Beverage;
-
     constructor(beverage: Beverage) {
         super();
         this._beverage = beverage;

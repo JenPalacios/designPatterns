@@ -3,8 +3,6 @@ import { CondimentDecorator } from "../abstractCondimentDecorator";
 
 export class SteamedMild extends CondimentDecorator {
 
-    private _beverage: Beverage;
-
     constructor(beverage: Beverage) {
         super();
         this._beverage = beverage;
