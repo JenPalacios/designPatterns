@@ -3,6 +3,8 @@
  */
 import { Duck } from "./Duck";
 import { MallardDuck } from "./mallardDuck";
+import { ModelDuck } from "./modelDuck";
+import { FlyRocketPowered } from "./flyBehaviour/flyRocketPowered";
 
 class MiniDuckSimulator {
 
@@ -11,6 +13,11 @@ class MiniDuckSimulator {
 
         mallardDuck.performQuack();
         mallardDuck.performFly();
+
+        const model: Duck = new ModelDuck();
+        model.performFly();
+        model.setFlyBehaviour(new FlyRocketPowered());
+        model.performFly();
     }
 }
 
