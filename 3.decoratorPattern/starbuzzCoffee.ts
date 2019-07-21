@@ -1,3 +1,6 @@
+/**
+ * in the root of the project run: ts-node 3.decoratorPattern/starbuzzCoffee.ts
+ */
 import { Beverage } from "./abstractBeverage";
 import { Espresso } from "./concreteBeverages/espresso";
 import { DarkRoast } from "./concreteBeverages/darkRoast";

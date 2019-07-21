@@ -1,5 +1,5 @@
-import { Subject } from "./interfaces/subject";
-import { Observer } from "./interfaces/observer";
+import { Subject } from "./interface/subject";
+import { Observer } from "./interface/observer";
 
 export class WeatherData implements Subject {
 

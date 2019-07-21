@@ -1,5 +1,5 @@
-import { Observer } from "../interfaces/observer";
-import { DisplayElement } from "../interfaces/displayElement";
+import { Observer } from "../interface/observer";
+import { DisplayElement } from "../interface/displayElement";
 import { WeatherData } from "../weatherData";
 
 export class StatisticsDisplay implements Observer, DisplayElement {

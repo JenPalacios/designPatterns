@@ -1,10 +1,10 @@
 /**
- * in the root of the project run: ts-node observerPattern/weatherStation.ts
+ * in the root of the project run: ts-node 2.observerPattern/weatherStation.ts
  */
 import { WeatherData } from "./weatherData";
-import { CurrentConditionsDisplay } from "./displays/currentConditionsDisplay";
-import { StatisticsDisplay } from "./displays/statisticsDisplay";
-import { ForecastDisplay } from "./displays/forecastDisplay";
+import { CurrentConditionsDisplay } from "./display/currentConditionsDisplay";
+import { StatisticsDisplay } from "./display/statisticsDisplay";
+import { ForecastDisplay } from "./display/forecastDisplay";
 
 export class WeatherStation {
  
